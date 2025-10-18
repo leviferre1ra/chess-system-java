@@ -34,7 +34,9 @@ public class UI {
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
     public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
         System.out.flush();
     }
 
@@ -45,6 +47,9 @@ public class UI {
         System.out.println();
         System.out.println("Turn : " + chessMatch.getTurn());
         System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+        if (chessMatch.getCheck()){
+            System.out.println("CHECK!");
+        }
     }
 
     public static ChessPosition readChessPosition(Scanner sc){
