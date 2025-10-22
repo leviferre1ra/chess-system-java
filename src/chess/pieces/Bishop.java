@@ -23,41 +23,41 @@ public class Bishop extends ChessPiece {
 
         // nw noroeste
         p.setValues(position.getRow() -1, position.getColumn() -1);
-        while (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
             p.setValues(p.getRow() -1, p.getColumn() -1 );
         }
-        if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
         // ne nordeste
         p.setValues(position.getRow() -1, position.getColumn() +1);
-        while (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
             p.setValues(p.getRow() -1, p.getColumn() +1 );
         }
-        if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
         // se sudeste
         p.setValues(position.getRow() +1, position.getColumn() +1);
-        while (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
             p.setValues(p.getRow() +1, p.getColumn() +1 );
         }
-        if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
         // abaixo da peça
         p.setValues(position.getRow() +1, position.getColumn() -1);
-        while (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
+        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
             p.setValues(p.getRow() +1, p.getColumn() -1 );
         }
-        if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
