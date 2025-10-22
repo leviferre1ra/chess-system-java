@@ -15,7 +15,6 @@ public class Pawn extends ChessPiece {
         this.chessMatch = chessMatch;
     }
 
-
     @Override
     public boolean[][] possibleMoves() {
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
@@ -39,7 +38,7 @@ public class Pawn extends ChessPiece {
             p.setValues(position.getRow() - 1, position.getColumn() + 1);
             if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
                 mat[p.getRow()][p.getColumn()] = true;
-                }
+            }
 
             // #specialmove en passant white
             if (position.getRow() == 3) {
@@ -48,31 +47,29 @@ public class Pawn extends ChessPiece {
                     mat[left.getRow() - 1][left.getColumn()] = true;
                 }
                 Position right = new Position(position.getRow(), position.getColumn() + 1);
-                 if (getBoard().positionExistis(right) && isThereOpoonetPiece(right) && getBoard().piece(right) == chessMatch.getEnPassantVulnerable()) {
-                     mat[right.getRow() - 1][right.getColumn()] = true;
-                 }
+                if (getBoard().positionExistis(right) && isThereOpoonetPiece(right) && getBoard().piece(right) == chessMatch.getEnPassantVulnerable()) {
+                    mat[right.getRow() - 1][right.getColumn()] = true;
+                }
             }
-
-
+        }
+        else {
+            p.setValues(position.getRow() + 1, position.getColumn());
+            if (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
+                mat[p.getRow()][p.getColumn()] = true;
             }
-            else {
-                p.setValues(position.getRow() + 1, position.getColumn());
-                if (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p)) {
-                    mat[p.getRow()][p.getColumn()] = true;
-                }
-                p.setValues(position.getRow() + 2, position.getColumn());
-                Position p2 = new Position(position.getRow() + 1, position.getColumn());
-                if (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p) && getBoard().positionExistis(p2) && !getBoard().thereIsAPiece(p2) && getMoveCount() == 0) {
-                    mat[p.getRow()][p.getColumn()] = true;
-                }
-                p.setValues(position.getRow() + 1, position.getColumn() - 1);
-                if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
-                    mat[p.getRow()][p.getColumn()] = true;
-                }
-                p.setValues(position.getRow() - 1, position.getColumn() + 1);
-                if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
-                    mat[p.getRow()][p.getColumn()] = true;
-                }
+            p.setValues(position.getRow() + 2, position.getColumn());
+            Position p2 = new Position(position.getRow() + 1, position.getColumn());
+            if (getBoard().positionExistis(p) && !getBoard().thereIsAPiece(p) && getBoard().positionExistis(p2) && !getBoard().thereIsAPiece(p2) && getMoveCount() == 0) {
+                mat[p.getRow()][p.getColumn()] = true;
+            }
+            p.setValues(position.getRow() + 1, position.getColumn() - 1);
+            if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+                mat[p.getRow()][p.getColumn()] = true;
+            }
+            p.setValues(position.getRow() + 1, position.getColumn() + 1);
+            if (getBoard().positionExistis(p) && isThereOpoonetPiece(p)) {
+                mat[p.getRow()][p.getColumn()] = true;
+            }
 
             // #specialmove en passant black
             if (position.getRow() == 4) {
@@ -85,9 +82,9 @@ public class Pawn extends ChessPiece {
                     mat[right.getRow() + 1][right.getColumn()] = true;
                 }
             }
-            }
-            return mat;
         }
+        return mat;
+    }
 
     @Override
     public String toString() {
@@ -95,4 +92,3 @@ public class Pawn extends ChessPiece {
     }
 
 }
-
